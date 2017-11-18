@@ -1,0 +1,43 @@
+<div class="container theme-showcase" role="main">
+    <h2>Automated Planting 1.0 <a target="_blank" style="font-size:10px;" href="http://MarcinPolak.eu/AutomatedPlanting">About</a></h2>
+    <form method="post"> <p>
+
+            <select id="preset" onchange="document.location.href='/index.html?preset='+this.value;">
+            <?php foreach($presets as $preset):?>
+                <option <?php
+                if ($preset['id'] == $selectedPreset) {
+                    echo 'selected="selected"';
+                }
+                ?> value="<?php echo $preset['id']?>"><?php echo $preset['name']?></option>
+            <?php endforeach; ?>
+        </select>
+
+        <button style="margin-left:20px;" type="submit" name="preset_run" class="btn btn-danger" value="run">Run Preset</button>
+    </p>
+
+        <div class="bs-example bs-example-tabs" role="tabpanel">
+            <ul id="plantingTab" class="nav nav-tabs">
+                <li onclick="$('#bbb').hide();" class="active"><a href="#status-tab" data-toggle="tab">Status</a></li>
+                <li onclick="$('#bbb').show();"><a href="#daynight-tab" data-toggle="tab">Day/Night</a></li>
+                <li onclick="$('#bbb').show();"><a href="#lighting-tab" data-toggle="tab">Lighting</a></li>
+                <li onclick="$('#bbb').hide();"><a href="#custom-tab" data-toggle="tab">Custom</a></li>
+            </ul>
+            <div id="plantingTabContent" class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="status-tab">
+                    <?php echo o("tabs/status"); ?>
+                </div>
+                <div role="tabpanel" class="tab-pane fade in" id="daynight-tab">
+                    <?php echo o("tabs/daynight"); ?>
+                </div>
+                <div role="tabpanel" class="tab-pane fade in" id="lighting-tab">
+                    <?php echo o("tabs/lighting"); ?>
+                </div>
+                <div role="tabpanel" class="tab-pane fade in" id="custom-tab">
+                    <?php echo o("tabs/custom") ?>
+                </div>
+            </div>
+        </div>
+
+        <button style="display: none;" id="bbb" onclick="if(!window.confirm('Are you sure you want to update this preset? It will update all values!')){return false;};$('form').submit();">Update</button>
+    </form>
+</div>

@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-md-4">
+        <BR/>
+
+        <div class="result">
+        </div>
+        <BR/>
+        <img id="plantImage" width="300" src="/image.html"/>
+        <BR/><BR/>
+        <BR/>
+    </div>
+</div>
+<script>
+    var myImageElement = $('#plantImage');
+    var resultElement = $('.result');
+    setInterval(function () {
+        myImageElement.attr("src", '/image.html?rand=' + Math.random());
+        $.ajax({
+            url: '/status.html',
+            success: function (data) {
+                resultElement.html(data);
+            }
+        });
+    }, 5000);
+</script>

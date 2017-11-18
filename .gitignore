@@ -1,0 +1,6 @@
+nbproject
+build/*
+vendor/*
+logs/*
+_apps/_plant/logs/*
+storage/*

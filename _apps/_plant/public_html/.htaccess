@@ -1,0 +1,56 @@
+#RewriteEngine On
+RewriteCond $1 !^(js|js_min|css|xhprof_html)
+#RewriteRule ^(.*)$ /index.php/$1 [L]
+RewriteEngine On
+
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond $1 !^(opcachegui)
+RewriteCond $1 !^(js|js_min|css|xhprof_html)
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+#php_value upload_max_filesize 10M
+#php_value post_max_size 10M
+
+# BEGIN gzip
+
+<FilesMatch ".(js|css|html|htm|php|xml)$">
+SetOutputFilter DEFLATE
+</FilesMatch>
+
+# Netscape 4.x has some problems...
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+
+# Netscape 4.06-4.08 have some more problems
+BrowserMatch ^Mozilla/4\.0[678] no-gzip
+
+# MSIE masquerades as Netscape, but it is fine
+# BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+
+# NOTE: Due to a bug in mod_setenvif up to Apache 2.0.48
+# the above regex won't work. You can use the following
+# workaround to get the desired effect:
+BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html
+
+## Don't compress images
+#SetEnvIfNoCase Request_URI \
+#\.(?:gif|jpe?g|png)$ no-gzip dont-vary
+
+# Make sure proxies don't deliver the wrong content
+Header append Vary User-Agent env=!dont-vary
+
+#mainly Internet Explorer 8 and 9
+Header set X-XSS-Protection "1; mode=block"
+
+# prevent mime based attacks
+Header set X-Content-Type-Options "nosniff"
+
+# prevent from clickjacking
+Header always append X-Frame-Options SAMEORIGIN
+
+<FilesMatch ".(ico|jpg|jpeg|png|gif|js|css|swf)$">
+Header set Expires "Tue, 9 Sep 2099 00:00:00 GMT"
+</FilesMatch>
+
+# END gzip

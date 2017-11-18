@@ -1,0 +1,15 @@
+{
+    "require": {
+        "php": ">=5.4.3",
+        "hyperthese/php-serial": "dev-master",
+        "psr/log": "1.0.*@dev",
+        "monolog/monolog": "1.11.*@dev"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "classmap": [
+            "_apps/_plant/src",
+            "src"
+        ]
+    }
+}

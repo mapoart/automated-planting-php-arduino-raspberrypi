@@ -1,0 +1,120 @@
+<div class="row">
+    <div class="col-md-4">
+        <h2>Daytime</h2>
+
+        <div class="dropdown">
+            Growing
+            <select name="growing_day_start">
+                <?php for ($x = 0; $x < 24; $x++): ?>
+                    <option <?php
+                    if ($x == $actualPreset['growing_day_start']) {
+                        echo 'selected="selected"';
+                    }
+                    ?> value="<?php echo $x; ?>"><?php echo $x; ?></option>
+                <?php endfor; ?>
+            </select>
+
+            Flowering
+            <select name="flowering_day_start">
+                <?php for ($x = 0; $x < 24; $x++): ?>
+                    <option <?php
+                    if ($x == $actualPreset['flowering_day_start']) {
+                        echo 'selected="selected"';
+                    }
+                    ?> value="<?php echo $x; ?>"><?php echo $x; ?></option>
+                <?php endfor; ?>
+            </select>
+        </div>
+        <fieldset>
+            <legend>Temperature</legend>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <input name="day_temp_min" type="text" class="form-control" placeholder="Min temperature"
+                           value="<?php echo $actualPreset['day_temp_min'] ?>">
+                    <span class="input-group-addon">&deg;C</span>
+                </div>
+
+                <div class="input-group">
+                    <input name="day_temp_max" type="text" class="form-control" placeholder="Max temperature"
+                           value="<?php echo $actualPreset['day_temp_max'] ?>">
+                    <span class="input-group-addon">&deg;C</span>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Humidity</legend>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <input name="day_humidity_min" type="text" class="form-control" placeholder="Min humidity"
+                           value="<?php echo $actualPreset['day_humidity_min'] ?>">
+                    <span class="input-group-addon">%</span>
+                </div>
+
+                <div class="input-group">
+                    <input name="day_humidity_max" type="text" class="form-control" placeholder="Max humidity"
+                           value="<?php echo $actualPreset['day_humidity_max'] ?>">
+                    <span class="input-group-addon">%</span>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="col-md-4">
+        <h2>Nightime</h2>
+
+        <div class="dropdown">
+            Growing
+            <select name="growing_night_start">
+                <?php for ($x = 0; $x < 24; $x++): ?>
+                    <option <?php
+                    if ($x == $actualPreset['growing_night_start']) {
+                        echo 'selected="selected"';
+                    }
+                    ?> value="<?php echo $x; ?>"><?php echo $x; ?></option>
+                <?php endfor; ?>
+            </select>
+
+            Flowering
+            <select name="flowering_night_start">
+                <?php for ($x = 0; $x < 24; $x++): ?>
+                    <option <?php
+                    if ($x == $actualPreset['flowering_night_start']) {
+                        echo 'selected="selected"';
+                    }
+                    ?> value="<?php echo $x; ?>"><?php echo $x; ?></option>
+                <?php endfor; ?>
+            </select>
+        </div>
+        <fieldset>
+            <legend>Temperature</legend>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <input name="night_temp_min" type="text" class="form-control" placeholder="Min temperature"
+                           value="<?php echo $actualPreset['night_temp_min'] ?>">
+                    <span class="input-group-addon">&deg;C</span>
+                </div>
+
+                <div class="input-group">
+                    <input name="night_temp_max" type="text" class="form-control" placeholder="Max temperature"
+                           value="<?php echo $actualPreset['night_temp_max'] ?>">
+                    <span class="input-group-addon">&deg;C</span>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Humidity</legend>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <input name="night_humidity_min" type="text" class="form-control" placeholder="Min humidity"
+                           value="<?php echo $actualPreset['night_humidity_min'] ?>">
+                    <span class="input-group-addon">%</span>
+                </div>
+
+                <div class="input-group">
+                    <input name="night_humidity_max" type="text" class="form-control" placeholder="Max temperature"
+                           value="<?php echo $actualPreset['night_humidity_max'] ?>">
+                    <span class="input-group-addon">%</span>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>

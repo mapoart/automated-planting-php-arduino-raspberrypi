@@ -1,0 +1,4 @@
+
+
+Setup your webserver to: http://xhprof.local.pl/ to this directory
+
